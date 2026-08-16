@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>결제 | SV Vape Online Store</title>
+    <meta name="description" content="SV Vape 온라인 스토어 결제 및 주문 접수 페이지.">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <header class="site-header">
+      <nav class="store-nav" aria-label="상단 메뉴">
+        <a class="brand-logo" href="home.html" aria-label="SV Vape 홈">
+          <img src="../image/LOGO_PNG.png" alt="SV Vape">
+        </a>
+
+        <div class="nav-actions" aria-label="회원 및 쇼핑 메뉴">
+          <a class="account-link" href="login.html" data-auth-link>로그인</a>
+          <a class="account-link" href="signup.html" data-signup-link>회원가입</a>
+          <button class="link-button" type="button" data-logout hidden>로그아웃</button>
+          <button class="icon-button" type="button" aria-label="검색 열기" data-search-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m16.5 16.5 4 4"></path>
+            </svg>
+          </button>
+          <button class="icon-button cart-button" type="button" aria-label="장바구니" data-cart-open>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h15l-2 9H8L6 7Z"></path>
+              <path d="M6 7 5.4 4H3"></path>
+              <circle cx="9" cy="20" r="1.4"></circle>
+              <circle cx="18" cy="20" r="1.4"></circle>
+            </svg>
+            <span class="cart-count" data-cart-count>0</span>
+          </button>
+          <button class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 펼치기" data-menu-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <form class="search-bar" data-search-bar data-search-form>
+        <label class="sr-only" for="store-search">상품 검색</label>
+        <input id="store-search" type="search" placeholder="SV NOS, 0 니코틴 검색">
+        <button type="submit">검색</button>
+      </form>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a href="login.html" data-auth-link>로그인</a>
+        <a href="signup.html" data-signup-link>회원가입</a>
+        <button type="button" data-cart-open>장바구니</button>
+        <a href="account.html" data-account-link hidden>마이페이지</a>
+        <button type="button" data-logout hidden>로그아웃</button>
+      </div>
+    </header>
+
+    <main class="checkout-main" id="main">
+      <div class="page-title">
+        <p class="eyebrow">Checkout</p>
+        <h1>결제</h1>
+        <span>배송 정보와 결제수단을 확인한 뒤 주문을 접수합니다.</span>
+      </div>
+
+      <section class="checkout-layout" aria-label="결제 정보" data-checkout-shell>
+        <form class="checkout-form" data-checkout-form novalidate>
+          <h2>배송 정보</h2>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>받는 분</span>
+              <input name="recipient" type="text" autocomplete="name" required>
+            </label>
+            <label class="form-field">
+              <span>이메일</span>
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label class="form-field">
+              <span>전화번호</span>
+              <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required>
+            </label>
+            <label class="form-field">
+              <span>배송지</span>
+              <input name="address" type="text" autocomplete="street-address" required>
+            </label>
+            <label class="form-field full">
+              <span>배송 메모</span>
+              <textarea name="memo" placeholder="배송 요청사항"></textarea>
+            </label>
+          </div>
+
+          <h2>결제수단</h2>
+          <div class="payment-options" aria-label="결제수단 선택">
+            <label>
+              <input type="radio" name="paymentMethod" value="card" checked>
+              카드 결제
+              <span>신용/체크카드</span>
+            </label>
+            <label>
+              <input type="radio" name="paymentMethod" value="transfer">
+              무통장 입금
+              <span>주문 접수 후 안내</span>
+            </label>
+            <label>
+              <input type="radio" name="paymentMethod" value="mobile">
+              간편 결제
+              <span>모바일 결제</span>
+            </label>
+          </div>
+
+          <div class="checkbox-list">
+            <label class="checkbox-field">
+              <input name="adultConfirmed" type="checkbox" required>
+              <span>성인 구매 대상 상품임을 확인했습니다.</span>
+            </label>
+          </div>
+
+          <div class="form-status" data-checkout-status role="status" aria-live="polite"></div>
+
+          <button class="submit-button" type="submit">주문 접수하기</button>
+        </form>
+
+        <aside class="summary-panel" aria-labelledby="checkout-summary-title">
+          <h2 id="checkout-summary-title">주문 상품</h2>
+          <div data-checkout-summary></div>
+        </aside>
+      </section>
+
+      <section class="order-complete" data-order-complete aria-label="주문 완료">
+        <p class="eyebrow">Order Complete</p>
+        <h2>주문이 접수되었습니다.</h2>
+        <p>주문번호 <strong data-order-id></strong></p>
+        <p>결제 예정 금액 <strong data-order-total></strong></p>
+        <div class="summary-actions">
+          <a class="product-detail-link" href="account.html" data-order-history-link>주문 내역 보기</a>
+          <a class="outline-button" href="home.html#featured">계속 쇼핑하기</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <address class="business-info">
+        <span>상호명: 케이브릿지유한회사(K-Bdrige Trading Inc.)</span>
+        <span>사업자등록번호: 292-81-04069</span>
+        <span>사업장주소: 서울특별시 관악구 신사로34, 601호(신림동, 에스엠2020타워)</span>
+        <span>이메일: <a href="mailto:cqz.12170@gmail.com">cqz.12170@gmail.com</a></span>
+        <span>대표전화: <a href="tel:010-8254-8362">010-8254-8362</a></span>
+        <span>통신판매업신고번호: 2026-서울관악-1396</span>
+      </address>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/checkout.js"></script>
+  </body>
+</html>

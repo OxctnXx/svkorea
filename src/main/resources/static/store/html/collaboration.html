@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SV NOS Collaboration | SV Vape Online Store</title>
+    <meta name="description" content="SV NOS와 한국 힙합 아티스트의 협업 갤러리 페이지.">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+    <div class="adult-bar">본 사이트는 만 19세 이상 성인만 이용할 수 있습니다. 미성년자에게 판매하지 않습니다.</div>
+
+    <header class="site-header">
+      <nav class="store-nav" aria-label="상단 메뉴">
+        <a class="brand-logo" href="home.html" aria-label="SV Vape 홈">
+          <img src="../image/LOGO_PNG.png" alt="SV Vape">
+        </a>
+
+        <div class="nav-actions" aria-label="회원 및 쇼핑 메뉴">
+          <a class="account-link" href="login.html" data-auth-link>로그인</a>
+          <a class="account-link" href="signup.html" data-signup-link>회원가입</a>
+          <button class="link-button" type="button" data-logout hidden>로그아웃</button>
+          <button class="icon-button" type="button" aria-label="검색 열기" data-search-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m16.5 16.5 4 4"></path>
+            </svg>
+          </button>
+          <button class="icon-button cart-button" type="button" aria-label="장바구니" data-cart-open>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h15l-2 9H8L6 7Z"></path>
+              <path d="M6 7 5.4 4H3"></path>
+              <circle cx="9" cy="20" r="1.4"></circle>
+              <circle cx="18" cy="20" r="1.4"></circle>
+            </svg>
+            <span class="cart-count" data-cart-count>0</span>
+          </button>
+          <button class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 펼치기" data-menu-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <form class="search-bar" data-search-bar data-search-form>
+        <label class="sr-only" for="store-search">상품 검색</label>
+        <input id="store-search" type="search" placeholder="SV NOS, 0 니코틴 검색">
+        <button type="submit">검색</button>
+      </form>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a href="login.html" data-auth-link>로그인</a>
+        <a href="signup.html" data-signup-link>회원가입</a>
+        <button type="button" data-cart-open>장바구니</button>
+        <a href="account.html" data-account-link hidden>마이페이지</a>
+        <button type="button" data-logout hidden>로그아웃</button>
+      </div>
+    </header>
+
+    <main class="collab-main" id="main">
+      <section class="collab-hero" aria-label="SV NOS 아티스트 협업">
+        <div class="collab-copy">
+          <p class="mono-kicker">01 / NEW STANDARD</p>
+          <div>
+            <p class="accent-kicker">SV NOS x K-HIPHOP ARTIST</p>
+            <h1>FLOW<br>GALLERY.</h1>
+            <span>한국 힙합 아티스트와 준비 중인 SV NOS 협업 프로젝트를 스튜디오 컷, 무드, 패키지 디테일의 갤러리로 미리 보여줍니다.</span>
+          </div>
+          <a class="shop-link" href="product-sv-nos.html">Product detail <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="collab-wall" aria-label="협업 갤러리 프리뷰">
+          <article class="collab-frame collab-frame--product">
+            <img src="../product_img/product_NOS_Black.png" alt="SV NOS Black 제품 이미지">
+            <span>PACKSHOT / 001</span>
+            <strong>SV NOS</strong>
+          </article>
+          <article class="collab-frame collab-frame--portrait">
+            <span>ARTIST / TBA</span>
+            <strong>Korean rap collaboration</strong>
+          </article>
+          <article class="collab-frame collab-frame--studio">
+            <span>STUDIO / SESSION</span>
+            <strong>Voice, light, zero nicotine</strong>
+          </article>
+          <article class="collab-frame collab-frame--drop">
+            <span>DROP / SOON</span>
+            <strong>Limited gallery release</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="collab-gallery" aria-label="협업 상세 갤러리">
+        <div class="section-head">
+          <div>
+            <p>COLLABORATION NOTES</p>
+            <h2>MADE FOR<br>THE FLOW.</h2>
+          </div>
+          <span>아티스트의 무대감과 SV NOS의 간결한 제품 언어가 만나는 방향을 갤러리형 페이지로 구성했습니다.</span>
+        </div>
+
+        <div class="collab-track">
+          <article>
+            <p>01</p>
+            <h3>Stage Tone</h3>
+            <span>블랙과 실버의 대비로 무대 조명 아래 선명하게 보이는 제품 무드를 강조합니다.</span>
+          </article>
+          <article>
+            <p>02</p>
+            <h3>Zero Nicotine</h3>
+            <span>0 니코틴이라는 제품 특성을 과장 없이, 깨끗하고 절제된 문장으로 전달합니다.</span>
+          </article>
+          <article>
+            <p>03</p>
+            <h3>Gallery Drop</h3>
+            <span>협업 공개 시 이미지, 영상, 한정 패키지 컷을 추가할 수 있는 확장형 구조입니다.</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <address class="business-info">
+        <span>상호명: 케이브릿지무역 유한회사(K-Bdrige Trading Inc.)</span>
+        <span>사업자등록번호: 292-81-04069</span>
+        <span>사업장주소: 서울특별시 관악구 신사로34, 601호(신림동, 에스엠2020타워)</span>
+        <span>이메일: <a href="mailto:cqz.12170@gmail.com">cqz.12170@gmail.com</a></span>
+        <span>대표전화: <a href="tel:010-8254-8362">010-8254-8362</a></span>
+        <span>통신판매업신고번호: 2026-서울관악-1396</span>
+      </address>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

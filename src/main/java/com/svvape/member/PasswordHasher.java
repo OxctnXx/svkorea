@@ -1,5 +1,6 @@
 package com.svvape.member;
 
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -33,9 +34,35 @@ public class PasswordHasher {
 				+ Base64.getEncoder().encodeToString(hash);
 	}
 
-	private byte[] pbkdf2(char[] password, byte[] salt) {
+	public boolean matches(String password, String encodedPassword) {
+		if (password == null || encodedPassword == null) {
+			return false;
+		}
+
+		String[] parts = encodedPassword.split("\\$");
+		if (parts.length != 4 || !"pbkdf2_sha256".equals(parts[0])) {
+			return false;
+		}
+
 		try {
-			PBEKeySpec spec = new PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH);
+			int iterations = Integer.parseInt(parts[1]);
+			byte[] salt = Base64.getDecoder().decode(parts[2]);
+			byte[] expectedHash = Base64.getDecoder().decode(parts[3]);
+			byte[] actualHash = pbkdf2(password.toCharArray(), salt, iterations);
+			return MessageDigest.isEqual(expectedHash, actualHash);
+		}
+		catch (IllegalArgumentException exception) {
+			return false;
+		}
+	}
+
+	private byte[] pbkdf2(char[] password, byte[] salt) {
+		return pbkdf2(password, salt, ITERATIONS);
+	}
+
+	private byte[] pbkdf2(char[] password, byte[] salt, int iterations) {
+		try {
+			PBEKeySpec spec = new PBEKeySpec(password, salt, iterations, KEY_LENGTH);
 			return SecretKeyFactory.getInstance(ALGORITHM).generateSecret(spec).getEncoded();
 		}
 		catch (NoSuchAlgorithmException | InvalidKeySpecException exception) {

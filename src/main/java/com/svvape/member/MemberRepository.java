@@ -3,7 +3,9 @@ package com.svvape.member;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.Optional;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -25,6 +27,27 @@ public class MemberRepository {
 				email
 		);
 		return count != null && count > 0;
+	}
+
+	public Optional<MemberAccount> findByEmail(String email) {
+		String sql = """
+				SELECT id, email, password_hash, name, status
+				FROM members
+				WHERE email = ?
+				""";
+
+		try {
+			return Optional.ofNullable(jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> new MemberAccount(
+					resultSet.getLong("id"),
+					resultSet.getString("email"),
+					resultSet.getString("password_hash"),
+					resultSet.getString("name"),
+					resultSet.getString("status")
+			), email));
+		}
+		catch (EmptyResultDataAccessException exception) {
+			return Optional.empty();
+		}
 	}
 
 	public long save(SignupMember member, String passwordHash) {

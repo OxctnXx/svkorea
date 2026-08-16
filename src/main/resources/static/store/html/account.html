@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>마이페이지 | SV Vape Online Store</title>
+    <meta name="description" content="SV Vape 온라인 스토어 계정과 주문 내역 페이지.">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <header class="site-header">
+      <nav class="store-nav" aria-label="상단 메뉴">
+        <a class="brand-logo" href="home.html" aria-label="SV Vape 홈">
+          <img src="../image/LOGO_PNG.png" alt="SV Vape">
+        </a>
+
+        <div class="nav-actions" aria-label="회원 및 쇼핑 메뉴">
+          <a class="account-link" href="login.html" data-auth-link>로그인</a>
+          <a class="account-link" href="signup.html" data-signup-link>회원가입</a>
+          <button class="link-button" type="button" data-logout data-redirect-home="true" hidden>로그아웃</button>
+          <button class="icon-button" type="button" aria-label="검색 열기" data-search-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m16.5 16.5 4 4"></path>
+            </svg>
+          </button>
+          <button class="icon-button cart-button" type="button" aria-label="장바구니" data-cart-open>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h15l-2 9H8L6 7Z"></path>
+              <path d="M6 7 5.4 4H3"></path>
+              <circle cx="9" cy="20" r="1.4"></circle>
+              <circle cx="18" cy="20" r="1.4"></circle>
+            </svg>
+            <span class="cart-count" data-cart-count>0</span>
+          </button>
+          <button class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 펼치기" data-menu-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <form class="search-bar" data-search-bar data-search-form>
+        <label class="sr-only" for="store-search">상품 검색</label>
+        <input id="store-search" type="search" placeholder="SV NOS, 0 니코틴 검색">
+        <button type="submit">검색</button>
+      </form>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a href="login.html" data-auth-link>로그인</a>
+        <a href="signup.html" data-signup-link>회원가입</a>
+        <button type="button" data-cart-open>장바구니</button>
+        <a href="account.html" data-account-link hidden aria-current="page">마이페이지</a>
+        <button type="button" data-logout data-redirect-home="true" hidden>로그아웃</button>
+      </div>
+    </header>
+
+    <main class="account-main" id="main">
+      <div class="page-title">
+        <p class="eyebrow">My Page</p>
+        <h1>마이페이지</h1>
+        <span>계정 정보와 주문 접수 내역을 확인합니다.</span>
+      </div>
+
+      <section class="account-shell" data-account-shell hidden>
+        <aside class="account-card">
+          <p class="eyebrow">Account</p>
+          <h2 data-account-name></h2>
+          <p data-account-email></p>
+          <div class="summary-actions">
+            <button class="product-detail-link" type="button" data-cart-open>장바구니 보기</button>
+            <button class="outline-button" type="button" data-logout data-redirect-home="true">로그아웃</button>
+          </div>
+        </aside>
+
+        <section aria-labelledby="orders-title">
+          <div class="section-head">
+            <div>
+              <p>Orders</p>
+              <h2 id="orders-title">주문 내역</h2>
+            </div>
+          </div>
+          <div class="order-list" data-order-list></div>
+        </section>
+      </section>
+
+      <section class="account-shell" data-guest-shell hidden>
+        <div class="empty-state">
+          <h2>로그인이 필요합니다.</h2>
+          <span>회원 계정으로 로그인하면 주문 내역을 이어서 볼 수 있고, 비회원 주문은 주문번호로 조회할 수 있습니다.</span>
+          <div class="summary-actions">
+            <a class="product-detail-link" href="login.html">로그인</a>
+            <button class="outline-button" type="button" data-guest-order-open>비회원 주문조회</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <address class="business-info">
+        <span>상호명: 케이브릿지유한회사(K-Bdrige Trading Inc.)</span>
+        <span>사업자등록번호: 292-81-04069</span>
+        <span>사업장주소: 서울특별시 관악구 신사로34, 601호(신림동, 에스엠2020타워)</span>
+        <span>이메일: <a href="mailto:cqz.12170@gmail.com">cqz.12170@gmail.com</a></span>
+        <span>대표전화: <a href="tel:010-8254-8362">010-8254-8362</a></span>
+        <span>통신판매업신고번호: 2026-서울관악-1396</span>
+      </address>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/account.js"></script>
+  </body>
+</html>

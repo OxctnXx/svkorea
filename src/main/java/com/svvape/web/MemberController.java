@@ -2,7 +2,10 @@ package com.svvape.web;
 
 import java.util.Map;
 
+import com.svvape.member.AuthenticationFailedException;
 import com.svvape.member.DuplicateMemberException;
+import com.svvape.member.LoginRequest;
+import com.svvape.member.LoginResult;
 import com.svvape.member.MemberService;
 import com.svvape.member.SignupRequest;
 import com.svvape.member.SignupResult;
@@ -38,6 +41,18 @@ public class MemberController {
 		));
 	}
 
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest request) {
+		LoginResult result = memberService.login(request);
+
+		return ResponseEntity.ok(Map.of(
+				"message", "로그인이 완료되었습니다.",
+				"memberId", result.memberId(),
+				"email", result.email(),
+				"name", result.name()
+		));
+	}
+
 	@ExceptionHandler(SignupValidationException.class)
 	public ResponseEntity<Map<String, Object>> handleValidation(SignupValidationException exception) {
 		return ResponseEntity.badRequest().body(Map.of(
@@ -49,6 +64,13 @@ public class MemberController {
 	@ExceptionHandler(DuplicateMemberException.class)
 	public ResponseEntity<Map<String, Object>> handleDuplicate(DuplicateMemberException exception) {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of(
+				"message", exception.getMessage()
+		));
+	}
+
+	@ExceptionHandler(AuthenticationFailedException.class)
+	public ResponseEntity<Map<String, Object>> handleAuthentication(AuthenticationFailedException exception) {
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
 				"message", exception.getMessage()
 		));
 	}

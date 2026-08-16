@@ -39,6 +39,28 @@ public class MemberService {
 		}
 	}
 
+	public LoginResult login(LoginRequest request) {
+		String email = normalizeEmail(request.email());
+		String password = trimToEmpty(request.password());
+
+		if (email.isBlank() || password.isBlank()) {
+			throw new AuthenticationFailedException("이메일 또는 비밀번호를 확인해 주세요.");
+		}
+
+		MemberAccount account = memberRepository.findByEmail(email)
+				.orElseThrow(() -> new AuthenticationFailedException("이메일 또는 비밀번호를 확인해 주세요."));
+
+		if (!"ACTIVE".equalsIgnoreCase(account.status())) {
+			throw new AuthenticationFailedException("이용할 수 없는 계정입니다.");
+		}
+
+		if (!passwordHasher.matches(password, account.passwordHash())) {
+			throw new AuthenticationFailedException("이메일 또는 비밀번호를 확인해 주세요.");
+		}
+
+		return new LoginResult(account.id(), account.email(), account.name());
+	}
+
 	private SignupMember validate(SignupRequest request) {
 		List<String> errors = new ArrayList<>();
 

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>회원가입 | SV Vape Online Store</title>
-    <meta name="description" content="SV Vape 온라인 스토어 회원가입 페이지.">
+    <title>로그인 | SV Vape Online Store</title>
+    <meta name="description" content="SV Vape 온라인 스토어 로그인 페이지.">
     <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body>
@@ -17,8 +17,8 @@
         </a>
 
         <div class="nav-actions" aria-label="회원 및 쇼핑 메뉴">
-          <a class="account-link" href="login.html" data-auth-link>로그인</a>
-          <a class="account-link" href="signup.html" data-signup-link aria-current="page">회원가입</a>
+          <a class="account-link" href="login.html" data-auth-link aria-current="page">로그인</a>
+          <a class="account-link" href="signup.html" data-signup-link>회원가입</a>
           <button class="link-button" type="button" data-logout hidden>로그아웃</button>
           <button class="icon-button" type="button" aria-label="검색 열기" data-search-toggle>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -52,8 +52,8 @@
       </form>
 
       <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
-        <a href="login.html" data-auth-link>로그인</a>
-        <a href="signup.html" data-signup-link aria-current="page">회원가입</a>
+        <a href="login.html" data-auth-link aria-current="page">로그인</a>
+        <a href="signup.html" data-signup-link>회원가입</a>
         <button type="button" data-cart-open>장바구니</button>
         <a href="account.html" data-account-link hidden>마이페이지</a>
         <button type="button" data-logout hidden>로그아웃</button>
@@ -61,69 +61,41 @@
     </header>
 
     <main class="auth-main" id="main">
-      <section class="auth-layout" aria-labelledby="signup-title">
+      <section class="auth-layout" aria-labelledby="login-title">
         <div class="auth-intro">
-          <p>Member</p>
-          <h1 id="signup-title">SV Vape 회원가입</h1>
-          <span>회원가입 후 계정 주문 내역과 재방문 구매 흐름을 더 편하게 이용할 수 있습니다.</span>
+          <p>Sign In</p>
+          <h1 id="login-title">로그인</h1>
+          <span>장바구니, 결제, 주문 내역 확인을 하나의 계정으로 이어갑니다.</span>
         </div>
 
         <div>
-          <form class="auth-form" data-signup-form novalidate>
+          <form class="auth-form" data-login-form novalidate>
             <div class="form-grid">
               <label class="form-field full">
                 <span>이메일</span>
                 <input name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
               </label>
 
-              <label class="form-field">
-                <span>비밀번호</span>
-                <input name="password" type="password" autocomplete="new-password" minlength="8" required>
-              </label>
-
-              <label class="form-field">
-                <span>비밀번호 확인</span>
-                <input name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required>
-              </label>
-
-              <label class="form-field">
-                <span>이름</span>
-                <input name="name" type="text" autocomplete="name" required>
-              </label>
-
-              <label class="form-field">
-                <span>전화번호</span>
-                <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
-              </label>
-
               <label class="form-field full">
-                <span>생년월일</span>
-                <input name="birthDate" type="date" required>
+                <span>비밀번호</span>
+                <input name="password" type="password" autocomplete="current-password" required>
               </label>
             </div>
 
             <div class="checkbox-list">
               <label class="checkbox-field">
-                <input name="adultConfirmed" type="checkbox" required>
-                <span>만 19세 이상 성인입니다.</span>
-              </label>
-              <label class="checkbox-field">
-                <input name="termsAccepted" type="checkbox" required>
-                <span>필수 이용약관 및 개인정보 처리에 동의합니다.</span>
-              </label>
-              <label class="checkbox-field">
-                <input name="marketingAgreed" type="checkbox">
-                <span>이벤트 및 혜택 안내 수신에 동의합니다.</span>
+                <input name="keepSignedIn" type="checkbox">
+                <span>로그인 상태 유지</span>
               </label>
             </div>
 
-            <div class="form-status" data-signup-status role="status" aria-live="polite"></div>
+            <div class="form-status" data-login-status role="status" aria-live="polite"></div>
 
-            <button class="submit-button" type="submit">회원가입</button>
+            <button class="submit-button" type="submit">로그인</button>
           </form>
 
           <div class="auth-note">
-            이미 계정이 있다면 <a href="login.html">로그인</a> 후 장바구니와 주문 내역을 이어서 확인할 수 있습니다.
+            처음 방문했다면 <a href="signup.html">회원가입</a>으로 계정 주문 내역을 더 편하게 관리할 수 있습니다.
           </div>
         </div>
       </section>
@@ -141,6 +113,6 @@
     </footer>
 
     <script src="../js/script.js"></script>
-    <script src="../js/signup.js"></script>
+    <script src="../js/login.js"></script>
   </body>
 </html>
