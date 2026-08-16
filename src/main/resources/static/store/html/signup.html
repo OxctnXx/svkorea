@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>회원가입 | SV Vape Online Store</title>
+    <meta
+      name="description"
+      content="SV Vape online store membership signup."
+    >
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <header class="site-header">
+      <nav class="store-nav" aria-label="상단 메뉴">
+        <div class="nav-center">
+          <div class="category-group left">
+            <a href="index.html#category-1">카테고리1</a>
+            <a href="index.html#category-2">카테고리2</a>
+          </div>
+
+          <a class="brand-logo" href="index.html" aria-label="SV Vape 홈">
+            <img src="../image/LOGO_PNG.png" alt="SV Vape">
+          </a>
+
+          <div class="category-group right">
+            <a href="index.html#category-3">카테고리3</a>
+            <a href="index.html#category-4">카테고리4</a>
+          </div>
+        </div>
+
+        <div class="nav-actions" aria-label="회원 및 쇼핑 메뉴">
+          <a class="account-link" href="#">로그인</a>
+          <a class="account-link" href="signup.html" aria-current="page">회원가입</a>
+          <button class="icon-button" type="button" aria-label="검색 열기" data-search-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m16.5 16.5 4 4"></path>
+            </svg>
+          </button>
+          <button class="icon-button cart-button" type="button" aria-label="장바구니">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h15l-2 9H8L6 7Z"></path>
+              <path d="M6 7 5.4 4H3"></path>
+              <circle cx="9" cy="20" r="1.4"></circle>
+              <circle cx="18" cy="20" r="1.4"></circle>
+            </svg>
+            <span class="cart-count">0</span>
+          </button>
+          <button class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 펼치기" data-menu-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="search-bar" data-search-bar>
+        <label class="sr-only" for="store-search">상품 검색</label>
+        <input id="store-search" type="search" placeholder="상품명, 액상, 디바이스 검색">
+        <button type="button">검색</button>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a href="index.html#category-1">카테고리1</a>
+        <a href="index.html#category-2">카테고리2</a>
+        <a href="index.html#category-3">카테고리3</a>
+        <a href="index.html#category-4">카테고리4</a>
+        <a href="#">로그인</a>
+        <a href="signup.html" aria-current="page">회원가입</a>
+      </div>
+    </header>
+
+    <main class="signup-main" id="main">
+      <section class="signup-layout" aria-labelledby="signup-title">
+        <div class="signup-intro">
+          <p>Member</p>
+          <h1 id="signup-title">SV Vape 회원가입</h1>
+          <span>성인 회원 확인 후 온라인 스토어를 이용할 수 있습니다.</span>
+        </div>
+
+        <form class="signup-form" data-signup-form novalidate>
+          <div class="form-grid">
+            <label class="form-field full">
+              <span>이메일</span>
+              <input name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
+            </label>
+
+            <label class="form-field">
+              <span>비밀번호</span>
+              <input name="password" type="password" autocomplete="new-password" minlength="8" required>
+            </label>
+
+            <label class="form-field">
+              <span>비밀번호 확인</span>
+              <input name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+            </label>
+
+            <label class="form-field">
+              <span>이름</span>
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+
+            <label class="form-field">
+              <span>전화번호</span>
+              <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
+            </label>
+
+            <label class="form-field full">
+              <span>생년월일</span>
+              <input name="birthDate" type="date" required>
+            </label>
+          </div>
+
+          <div class="checkbox-list">
+            <label class="checkbox-field">
+              <input name="adultConfirmed" type="checkbox" required>
+              <span>만 19세 이상 성인입니다.</span>
+            </label>
+            <label class="checkbox-field">
+              <input name="termsAccepted" type="checkbox" required>
+              <span>필수 이용약관 및 개인정보 처리에 동의합니다.</span>
+            </label>
+            <label class="checkbox-field">
+              <input name="marketingAgreed" type="checkbox">
+              <span>이벤트 및 혜택 안내 수신에 동의합니다.</span>
+            </label>
+          </div>
+
+          <div class="form-status" data-signup-status role="status" aria-live="polite"></div>
+
+          <button class="submit-button" type="submit">회원가입</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>SV Vape Online Store</p>
+      <p>법적 성인 연령을 충족한 사용자만 이용할 수 있습니다.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/signup.js"></script>
+  </body>
+</html>

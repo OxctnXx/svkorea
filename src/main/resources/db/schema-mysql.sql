@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS members (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  phone VARCHAR(30),
+  birth_date DATE NOT NULL,
+  adult_confirmed TINYINT(1) NOT NULL DEFAULT 0,
+  terms_accepted TINYINT(1) NOT NULL DEFAULT 0,
+  marketing_agreed TINYINT(1) NOT NULL DEFAULT 0,
+  status VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_members_email (email),
+  KEY idx_members_created_at (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
