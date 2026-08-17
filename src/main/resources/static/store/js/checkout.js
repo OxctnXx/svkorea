@@ -68,10 +68,42 @@
     }
   };
 
-  const createOrder = (payload) => {
+  const submitOrderToServer = async (payload) => {
+    const response = await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        memberId: user ? user.memberId ?? user.id ?? null : null,
+        recipient: payload.recipient,
+        email: payload.email,
+        phone: payload.phone,
+        address: payload.address,
+        memo: payload.memo,
+        paymentMethod: payload.paymentMethod,
+        adultConfirmed: payload.adultConfirmed,
+        items: cart.map((item) => ({
+          name: item.name,
+          option: item.option,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      }),
+    });
+
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const message = Array.isArray(data.errors) && data.errors.length
+        ? data.errors.join(" ")
+        : (data.message || "주문 접수 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      throw new Error(message);
+    }
+    return data;
+  };
+
+  const recordLocalOrder = (payload, serverOrder) => {
     const totals = store.getCartTotals(cart);
     const order = {
-      id: `SV-${Date.now().toString(36).toUpperCase()}`,
+      id: serverOrder.orderNo,
       createdAt: new Date().toISOString(),
       status: "주문 접수",
       orderType: user ? "MEMBER" : "GUEST",
@@ -87,7 +119,7 @@
     return order;
   };
 
-  checkoutForm.addEventListener("submit", (event) => {
+  checkoutForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(checkoutForm);
@@ -111,7 +143,25 @@
       return;
     }
 
-    const order = createOrder(payload);
+    const submitButton = checkoutForm.querySelector(".submit-button");
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+    store.setStatus(checkoutStatus, "info", "주문을 접수하는 중입니다...");
+
+    let serverOrder;
+    try {
+      serverOrder = await submitOrderToServer(payload);
+    }
+    catch (error) {
+      store.setStatus(checkoutStatus, "error", error.message || "주문 접수 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+      return;
+    }
+
+    const order = recordLocalOrder(payload, serverOrder);
     checkoutShell.hidden = true;
     completePanel.classList.add("is-visible");
     completePanel.querySelector("[data-order-id]").textContent = order.id;
