@@ -61,6 +61,15 @@ public class MemberService {
 		return new LoginResult(account.id(), account.email(), account.name());
 	}
 
+	public boolean isEmailAvailable(String email) {
+		String normalizedEmail = normalizeEmail(email);
+		if (normalizedEmail.isBlank() || !EMAIL_PATTERN.matcher(normalizedEmail).matches()) {
+			throw new SignupValidationException(List.of("사용할 수 있는 이메일 주소를 입력해 주세요."));
+		}
+
+		return !memberRepository.existsByEmail(normalizedEmail);
+	}
+
 	private SignupMember validate(SignupRequest request) {
 		List<String> errors = new ArrayList<>();
 
@@ -69,6 +78,7 @@ public class MemberService {
 		String passwordConfirm = trimToEmpty(request.passwordConfirm());
 		String name = trimToEmpty(request.name());
 		String phone = normalizePhone(request.phone());
+		String gender = trimToEmpty(request.gender());
 		LocalDate birthDate = request.birthDate();
 
 		if (email.isBlank() || !EMAIL_PATTERN.matcher(email).matches()) {
@@ -83,14 +93,14 @@ public class MemberService {
 		if (name.isBlank()) {
 			errors.add("이름을 입력해 주세요.");
 		}
+		if (gender.isBlank()) {
+			errors.add("성별을 선택해 주세요.");
+		}
 		if (birthDate == null) {
 			errors.add("생년월일을 입력해 주세요.");
 		}
 		else if (birthDate.isAfter(LocalDate.now().minusYears(19))) {
 			errors.add("성인 회원만 가입할 수 있습니다.");
-		}
-		if (!request.adultConfirmed()) {
-			errors.add("성인 확인에 동의해 주세요.");
 		}
 		if (!request.termsAccepted()) {
 			errors.add("필수 약관에 동의해 주세요.");
@@ -106,7 +116,7 @@ public class MemberService {
 				name,
 				phone,
 				birthDate,
-				request.adultConfirmed(),
+				true,
 				request.termsAccepted(),
 				request.marketingAgreed()
 		);

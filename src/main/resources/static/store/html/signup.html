@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>회원가입 | SV Vape Online Store</title>
     <meta name="description" content="SV Vape 온라인 스토어 회원가입 페이지.">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css?v=signup-20260817-2">
   </head>
   <body>
     <a class="skip-link" href="#main">본문 바로가기</a>
@@ -65,56 +65,98 @@
         <div class="auth-intro">
           <p>Member</p>
           <h1 id="signup-title">SV Vape 회원가입</h1>
-          <span>회원가입 후 계정 주문 내역과 재방문 구매 흐름을 더 편하게 이용할 수 있습니다.</span>
+          <div class="auth-copy">
+            <span>성인 확인과 기본 배송 정보를 한 번에 등록합니다.</span>
+            <span>가입 후 장바구니와 주문 내역을 계정으로 이어서 확인할 수 있습니다.</span>
+          </div>
         </div>
 
         <div>
           <form class="auth-form" data-signup-form novalidate>
-            <div class="form-grid">
+            <div class="form-section signup-top-section">
+              <div class="signup-verification">
+                <button class="outline-button signup-verification-button" type="button" data-identity-verify>본인인증</button>
+              </div>
+
+              <div class="form-field full email-field">
+                <label for="signup-email">이메일</label>
+                <div class="email-check-row">
+                  <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="email@example.com" required data-email-input>
+                  <button class="outline-button email-check-button" type="button" data-email-check>이메일 확인</button>
+                </div>
+                <div class="field-status" data-email-check-status role="status" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="form-section signup-profile-section">
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>이름</span>
+                  <input name="name" type="text" autocomplete="name" readonly required>
+                </label>
+
+                <label class="form-field">
+                  <span>생년월일</span>
+                  <input name="birthDate" type="text" inputmode="numeric" autocomplete="bday" readonly required data-birth-date>
+                </label>
+
+                <label class="form-field">
+                  <span>전화번호</span>
+                  <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" readonly data-phone-input>
+                </label>
+
+                <label class="form-field">
+                  <span>성별</span>
+                  <select name="gender" required>
+                    <option value="" selected disabled>선택</option>
+                    <option value="M">남성</option>
+                    <option value="F">여성</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>비밀번호</span>
+                  <input name="password" type="password" autocomplete="new-password" minlength="8" required>
+                </label>
+
+                <label class="form-field">
+                  <span>비밀번호 확인</span>
+                  <input name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section signup-address-section">
+              <div class="form-field full postcode-field">
+                <label for="signup-postcode">우편번호</label>
+                <div class="address-lookup-row">
+                  <input id="signup-postcode" name="postcode" type="text" autocomplete="postal-code" placeholder="주소검색을 이용해 주세요" readonly data-postcode>
+                  <button class="outline-button address-search-button" type="button" data-address-search>주소검색</button>
+                </div>
+              </div>
+
               <label class="form-field full">
-                <span>이메일</span>
-                <input name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
+                <span>주소</span>
+                <input name="addressLine1" type="text" autocomplete="street-address" readonly data-address-line1>
               </label>
 
               <label class="form-field">
-                <span>비밀번호</span>
-                <input name="password" type="password" autocomplete="new-password" minlength="8" required>
-              </label>
-
-              <label class="form-field">
-                <span>비밀번호 확인</span>
-                <input name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required>
-              </label>
-
-              <label class="form-field">
-                <span>이름</span>
-                <input name="name" type="text" autocomplete="name" required>
-              </label>
-
-              <label class="form-field">
-                <span>전화번호</span>
-                <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
-              </label>
-
-              <label class="form-field full">
-                <span>생년월일</span>
-                <input name="birthDate" type="date" required>
+                <span>상세주소</span>
+                <input name="addressLine2" type="text" autocomplete="address-line2" data-address-line2>
               </label>
             </div>
 
-            <div class="checkbox-list">
-              <label class="checkbox-field">
-                <input name="adultConfirmed" type="checkbox" required>
-                <span>만 19세 이상 성인입니다.</span>
-              </label>
-              <label class="checkbox-field">
-                <input name="termsAccepted" type="checkbox" required>
-                <span>필수 이용약관 및 개인정보 처리에 동의합니다.</span>
-              </label>
-              <label class="checkbox-field">
-                <input name="marketingAgreed" type="checkbox">
-                <span>이벤트 및 혜택 안내 수신에 동의합니다.</span>
-              </label>
+            <div class="form-section signup-terms-section">
+              <div class="checkbox-list">
+                <label class="checkbox-field">
+                  <input name="termsAccepted" type="checkbox" required>
+                  <span>필수 이용약관 및 개인정보 처리에 동의합니다.</span>
+                </label>
+                <label class="checkbox-field">
+                  <input name="marketingAgreed" type="checkbox">
+                  <span>이벤트 및 혜택 안내 수신에 동의합니다.</span>
+                </label>
+              </div>
             </div>
 
             <div class="form-status" data-signup-status role="status" aria-live="polite"></div>
@@ -141,6 +183,7 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="../js/signup.js"></script>
   </body>
 </html>

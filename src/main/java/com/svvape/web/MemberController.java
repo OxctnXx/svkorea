@@ -14,9 +14,11 @@ import com.svvape.member.SignupValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -50,6 +52,16 @@ public class MemberController {
 				"memberId", result.memberId(),
 				"email", result.email(),
 				"name", result.name()
+		));
+	}
+
+	@GetMapping("/email-availability")
+	public ResponseEntity<Map<String, Object>> checkEmailAvailability(@RequestParam String email) {
+		boolean available = memberService.isEmailAvailable(email);
+
+		return ResponseEntity.ok(Map.of(
+				"available", available,
+				"message", available ? "사용 가능한 이메일입니다." : "이미 가입된 이메일입니다."
 		));
 	}
 

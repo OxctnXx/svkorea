@@ -8,8 +8,11 @@ public record SignupRequest(
 		String passwordConfirm,
 		String name,
 		String phone,
+		String gender,
+		String postcode,
+		String addressLine1,
+		String addressLine2,
 		LocalDate birthDate,
-		boolean adultConfirmed,
 		boolean termsAccepted,
 		boolean marketingAgreed
 ) {
