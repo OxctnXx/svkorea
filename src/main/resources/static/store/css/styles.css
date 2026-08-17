@@ -1053,14 +1053,16 @@ button {
 }
 
 .signup-verification-button,
-.address-search-button {
+.address-search-button,
+.email-check-button {
   color: #fff;
   background: var(--charcoal);
   border-color: var(--charcoal);
 }
 
 .auth-form .signup-verification-button.outline-button,
-.auth-form .address-search-button.outline-button {
+.auth-form .address-search-button.outline-button,
+.auth-form .email-check-button.outline-button {
   color: #fff;
   background: var(--charcoal);
   border-color: var(--charcoal);
